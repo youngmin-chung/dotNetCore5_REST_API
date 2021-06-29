@@ -1,0 +1,85 @@
+﻿@page "/"
+@using RESTAPI.Shared
+@using Syncfusion.Blazor.Grids
+
+<SfGrid DataSource="@Employees">
+    <GridColumns>
+        <GridColumn Field=@nameof(Employee.EmployeeId) HeaderText="Employee ID"></GridColumn>
+        <GridColumn Field=@nameof(Employee.FirstName) HeaderText="First Name"></GridColumn>
+        <GridColumn Field=@nameof(Employee.LastName) HeaderText=" Last Name"></GridColumn>
+        <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+    public List<Employee> Employees { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Employees = LoadData();
+    }
+
+    private List<Employee> LoadData()
+    {
+        Employee e1 = new Employee
+        {
+            EmployeeId = 1,
+            FirstName = "Harry",
+            LastName = "Potter",
+            Email = "harry@hogwarts.com",
+            DateOfBrith = new DateTime(1980, 10, 5),
+            Gender = Gender.Male,
+            Department = new Department { DepartmentId = 1, DepartmentName = "IT" },
+            PhotoPath = "images/hp.png"
+        };
+
+        Employee e2 = new Employee
+        {
+            EmployeeId = 2,
+            FirstName = "Hermione",
+            LastName = "Granger",
+            Email = "hermione@hogwarts.com",
+            DateOfBrith = new DateTime(1981, 12, 22),
+            Gender = Gender.Female,
+            Department = new Department { DepartmentId = 2, DepartmentName = "HR" },
+            PhotoPath = "images/hg.jpg"
+        };
+
+        Employee e3 = new Employee
+        {
+            EmployeeId = 3,
+            FirstName = "Ron",
+            LastName = "Weasley",
+            Email = "ron@hogwarts.com",
+            DateOfBrith = new DateTime(1979, 11, 11),
+            Gender = Gender.Male,
+            Department = new Department { DepartmentId = 1, DepartmentName = "IT" },
+            PhotoPath = "images/rw.png"
+        };
+
+        Employee e4 = new Employee
+        {
+            EmployeeId = 3,
+            FirstName = "Luna",
+            LastName = "Lovegood",
+            Email = "luna@hogwarts.com",
+            DateOfBrith = new DateTime(1982, 9, 23),
+            Gender = Gender.Female,
+            Department = new Department { DepartmentId = 3, DepartmentName = "Payroll" },
+            PhotoPath = "images/luluv.png"
+        };
+
+        Employee e5 = new Employee
+        {
+            EmployeeId = 3,
+            FirstName = "Rubeus",
+            LastName = "Hagrid",
+            Email = "rub@hogwarts.com",
+            DateOfBrith = new DateTime(1982, 9, 23),
+            Gender = Gender.Female,
+            Department = new Department { DepartmentId = 3, DepartmentName = "Payroll" },
+            PhotoPath = "images/rh.png"
+        };
+        return new List<Employee> { e1, e2, e3, e4, e5 };
+    }
+}
